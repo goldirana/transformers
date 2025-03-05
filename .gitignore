@@ -1,2 +1,16 @@
 /models
 .env
+/adapters/*
+adapters
+datasets/
+
+/home/tess/work/deep_learning/transformers/adapters
+/training_output
+/training_output/*
+/training_output/**/*
+/training_output/**/**/*
+
+# ignore pycache
+__pycache__/
+*.pyc
+/src/**/__pycache__/
