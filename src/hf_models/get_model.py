@@ -7,8 +7,11 @@ from src.hf_models.download_model import *
 from src.config.configuration import ConfigurationManager
 
 config_manager = ConfigurationManager()
+# get the current file path
+
 
 model_path = os.path.join(os.getcwd(), "models")
+os.makedirs(model_path, exist_ok=True)
 
 def check_model_present_in_local(model_name):
     models = os.listdir(model_path)

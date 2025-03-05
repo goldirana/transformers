@@ -39,4 +39,5 @@ if __name__ == "__main__":
     parser.add_argument("--world_size", type=int)
     parser.add_argument("--master_addr", type=str)
     args = parser.parse_args()
+    print(f"Running DDP on rank {args.rank}. World size: {args.world_size}. Master: {args.master_addr}")
     main(args.rank, args.world_size, args.master_addr)

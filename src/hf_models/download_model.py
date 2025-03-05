@@ -5,7 +5,7 @@ from transformers import (MobileBertModel, MobileBertConfig,
 
 import os
 model_path = os.path.join(os.getcwd(), "models")
-os.makedirs(model_path,exist_ok=False)
+os.makedirs(model_path,exist_ok=True)
 
 
 def download_distilbert(task: str):
