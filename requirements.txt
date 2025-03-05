@@ -2,5 +2,4 @@ transformers
 adapters==1.1.0
 datasets==3.3.2
 python-dotenv
-
-adapters
+accelerate>=0.26.0
