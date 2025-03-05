@@ -8,8 +8,10 @@ from src.config.configuration import ConfigurationManager
 
 config_manager = ConfigurationManager()
 
+model_path = os.path.join(os.getcwd(), "models")
+
 def check_model_present_in_local(model_name):
-    models = os.listdir('/home/tess/work/deep_learning/transformers/models')
+    models = os.listdir(model_path)
     if model_name in models:
         return True
     else:
