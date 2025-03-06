@@ -30,7 +30,7 @@ def get_mobilebert(task: str):
     return model, tokenizer, config
 
 
-def get_distilbert(task: str):
+def get_distilbert(task: str,  **kwargs):
     _ = check_model_present_in_local('distilbert')
     if _ == False:
         try:
@@ -45,7 +45,7 @@ def get_distilbert(task: str):
     if task == "SequenceClassification":
         model = DistilBertForSequenceClassification.from_pretrained(params.model_path,
                                                                     ignore_mismatched_sizes=True,
-                                                                    num_labels=77)
+                                                                    **kwargs)
         print("Model loaded successfully.")
     else:
         raise ValueError(f"Task {task} not recognized.")
