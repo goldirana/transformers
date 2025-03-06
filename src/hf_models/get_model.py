@@ -43,7 +43,9 @@ def get_distilbert(task: str):
     config = DistilBertConfig.from_pretrained(params.config_path)
     tokenizer = DistilBertTokenizer.from_pretrained(params.tokenizer_path)
     if task == "SequenceClassification":
-        model = DistilBertForSequenceClassification.from_pretrained(params.model_path)
+        model = DistilBertForSequenceClassification.from_pretrained(params.model_path,
+                                                                    ignore_mismatched_sizes=True,
+                                                                    num_labels=77)
         print("Model loaded successfully.")
     else:
         raise ValueError(f"Task {task} not recognized.")

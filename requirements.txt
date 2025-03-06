@@ -1,5 +1,5 @@
-transformers
-adapters==1.1.0
-datasets==3.3.2
 python-dotenv
-accelerate>=0.26.0
+transformers >=4.36.0
+datasets >=2.14.0
+accelerate >=0.26.0
+peft >=0.7.0
