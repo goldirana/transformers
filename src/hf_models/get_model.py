@@ -44,8 +44,10 @@ def get_distilbert(task: str,  **kwargs):
     tokenizer = DistilBertTokenizer.from_pretrained(params.tokenizer_path)
     if task == "SequenceClassification":
         model = DistilBertForSequenceClassification.from_pretrained(params.model_path,
+                                                                    
                                                                     ignore_mismatched_sizes=True,
-                                                                    **kwargs)
+                                                                    **kwargs
+                                                                    )
         print("Model loaded successfully.")
     else:
         raise ValueError(f"Task {task} not recognized.")
