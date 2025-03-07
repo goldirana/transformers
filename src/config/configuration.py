@@ -1,4 +1,4 @@
-from src.entity.config_entity import DistilBert
+from src.entity.config_entity import DistilBert, DistilGPT2
 import os
 from pathlib import Path
 model_path = Path(os.path.join(os.getcwd(), "models"))
@@ -15,6 +15,15 @@ class ConfigurationManager:
             model_name='distilbert')
         print(model_path)
         return params
+    
+    def get_distilgpt2_config(self) -> DistilGPT2:
+        params = DistilBert(
+            model_path=str(Path(os.path.join(model_path,'distilgpt2/model'))),
+            tokenizer_path=str(Path(os.path.join(model_path,'distilgpt2/tokenizer'))),
+            config_path=str(Path(os.path.join(model_path,'distilgpt2/config'))),
+            model_name='distilgpt2')
+        return params
+    
     
 if __name__ == "__main__":
     config_manager = ConfigurationManager()

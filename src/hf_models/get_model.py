@@ -1,7 +1,8 @@
 from transformers import (MobileBertModel, MobileBertConfig, 
                           MobileBertForSequenceClassification, MobileBertTokenizer,
                           DistilBertConfig, DistilBertTokenizer, 
-                          DistilBertForSequenceClassification)
+                          DistilBertForSequenceClassification,
+                          GPT2ForSequenceClassification, GPT2Config, GPT2Tokenizer)
 import os
 from src.hf_models.download_model import *
 from src.config.configuration import ConfigurationManager
@@ -46,6 +47,30 @@ def get_distilbert(task: str,  **kwargs):
         model = DistilBertForSequenceClassification.from_pretrained(params.model_path,
                                                                     
                                                                     ignore_mismatched_sizes=True,
+                                                                    **kwargs
+                                                                    )
+        print("Model loaded successfully.")
+    else:
+        raise ValueError(f"Task {task} not recognized.")
+    
+    return model, tokenizer, config
+
+def get_distilgpt2(task: str, **kwargs):
+    _ = check_model_present_in_local('distilgpt2')
+    if _ == False:
+        try:
+            # download the model
+            download_distilgpt2(task)
+        except:
+            raise ValueError("Model not found in Hugging Face model hub.")
+    params = config_manager.get_distilgpt2_config()
+    
+    config = GPT2Config.from_pretrained(params.config_path)
+    tokenizer = GPT2Tokenizer.from_pretrained(params.tokenizer_path)
+    if task == "SequenceClassification":
+        model = GPT2ForSequenceClassification.from_pretrained(params.model_path,
+                                                                    ignore_mismatched_sizes=True,
+                                                                    cache_dir="./fresh_cache",
                                                                     **kwargs
                                                                     )
         print("Model loaded successfully.")
