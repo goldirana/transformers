@@ -16,3 +16,4 @@ datasets/
 __pycache__/
 *.pyc
 /src/**/__pycache__/
+fashion/*
